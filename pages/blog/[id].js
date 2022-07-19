@@ -1,10 +1,9 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
+import axios from "axios";
 import styles from "../../styles/Home.module.css";
 
-export default function Post() {
-  const router = useRouter();
-  const postId = router.query.id;
+export default function Post({ id, data }) {
+  console.log("data ->", data);
   return (
     <div className={styles.container}>
       <Head>
@@ -14,8 +13,24 @@ export default function Post() {
       </Head>
 
       <main className={styles.main}>
-        <h1>Post {postId}</h1>
+        <h1>Post {id}</h1>
+        <h2>{data.title}</h2>
+        <p>{data.body}</p>
       </main>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { query } = context;
+  const response = await axios.get(
+    `https://jsonplaceholder.typicode.com/posts/${query.id}`
+  );
+
+  return {
+    props: {
+      data: response.data,
+      id: query.id,
+    },
+  };
 }
