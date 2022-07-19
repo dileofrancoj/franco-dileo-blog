@@ -1,7 +1,8 @@
+import axios from "axios";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 
-export default function Blog() {
+export default function Blog({ posts }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -15,4 +16,15 @@ export default function Blog() {
       </main>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const response = await axios.get(
+    "https://jsonplaceholder.typicode.com/posts/"
+  );
+  return {
+    props: {
+      post: response.data,
+    },
+  };
 }
