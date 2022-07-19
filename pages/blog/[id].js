@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "../../styles/Home.module.css";
 
 export default function Post({ id, data }) {
-  console.log("data ->", data);
+  if (!data) return "Loading...";
   return (
     <div className={styles.container}>
       <Head>

@@ -1,5 +1,7 @@
-import axios from "axios";
 import Head from "next/head";
+import Link from "next/link";
+import axios from "axios";
+
 import styles from "../../styles/Home.module.css";
 
 export default function Blog({ posts }) {
@@ -13,6 +15,17 @@ export default function Blog({ posts }) {
 
       <main className={styles.main}>
         <h1>Posts</h1>
+        {posts?.length > 0 &&
+          posts.map((post) => (
+            <Link
+              key={post.id}
+              href={{
+                pathname: `/blog/${post.id}`,
+              }}
+            >
+              {`Post: ${post.id}`.toString()}
+            </Link>
+          ))}
       </main>
     </div>
   );
@@ -22,9 +35,10 @@ export async function getStaticProps() {
   const response = await axios.get(
     "https://jsonplaceholder.typicode.com/posts/"
   );
+  console.log("repsonse ->", response.data);
   return {
     props: {
-      post: response.data,
+      posts: response.data,
     },
   };
 }
