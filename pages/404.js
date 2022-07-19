@@ -5,13 +5,13 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Franco Di Leo</title>
-        <meta name="description" content="Página de franco di leo" />
+        <title>Ups...</title>
+        <meta name="description" content="404" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1>Hello extranger</h1>
+        <h1>No encontramos lo que estás buscando...</h1>
       </main>
     </div>
   );

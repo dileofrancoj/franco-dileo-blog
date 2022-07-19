@@ -1,17 +1,17 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 
-export default function Home() {
+export default function Blog() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Franco Di Leo</title>
-        <meta name="description" content="Página de franco di leo" />
+        <title>Blog</title>
+        <meta name="description" content="Posts del blog" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1>Hello extranger</h1>
+        <h1>Posts</h1>
       </main>
     </div>
   );
